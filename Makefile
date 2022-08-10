@@ -118,26 +118,6 @@ release: quarto-extension
 	git tag v$(VERSION) -m "$(FILTER_NAME) $(VERSION)"
 
 #
-# Update filter name
-#
-.PHONY: update-name
-update-name:
-	sed -i'' -e 's/greetings/$(FILTER_NAME)/g' README.md
-	sed -i'' -e 's/greetings/$(FILTER_NAME)/g' test/test.yaml
-
-setup:
-	git mv greetings.lua $(REPO_NAME).lua
-	@# Crude method to updates the examples and links; removes the
-	@# template instructions from the README.
-	sed -i'' \
-	    -e 's/greetings/$(REPO_NAME)/g' \
-	    -e 's#tarleb/lua-filter-template#$(REPO_PATH)#g' \
-      -e '/^\* \*/,/^\* \*/d' \
-	    README.md
-	sed -i'' -e 's/greetings/$(REPO_NAME)/g' test/test.yaml
-	sed -i'' -e 's/Albert Krewinkel/$(USER_NAME)' LICENSE
-
-#
 # Clean
 #
 .PHONY: clean

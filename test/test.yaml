@@ -2,4 +2,4 @@ input-files: ["test/input.md"]
 to: native
 standalone: true
 filters:
-  - {type: lua, path: greetings.lua}
+  - {type: lua, path: section-bibliographies.lua}
