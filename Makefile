@@ -8,10 +8,6 @@ PANDOC ?= pandoc
 # Allow to adjust the diff command if necessary
 DIFF = diff
 
-# Directory containing the Quarto extension
-QUARTO_EXT_DIR = _extensions/$(FILTER_NAME)
-# The extension's name. Used in the Quarto extension metadata
-EXT_NAME = $(FILTER_NAME)
 # Current version, i.e., the latest tag. Used to version the quarto
 # extension.
 VERSION = $(shell git tag --sort=-version:refname --merged | head -n1 | \
@@ -19,11 +15,6 @@ VERSION = $(shell git tag --sort=-version:refname --merged | head -n1 | \
 ifeq "$(VERSION)" ""
 VERSION = 0.0.0
 endif
-
-# GitHub repository; used to setup the filter.
-REPO_PATH = $(shell git remote get-url origin | sed -e 's%.*github\.com[/:]%%')
-REPO_NAME = $(shell git remote get-url origin | sed -e 's%.*/%%')
-USER_NAME = $(shell git config user.name)
 
 # Test that running the filter on the sample input document yields
 # the expected output.
@@ -78,36 +69,6 @@ _site/output.md: $(FILTER_FILE) test/input.md test/test.yaml
 _site/$(FILTER_FILE): $(FILTER_FILE)
 	@mkdir -p _site
 	(cd _site && ln -sf ../$< $<)
-
-#
-# Quarto extension
-#
-
-# Creates or updates the quarto extension
-.PHONY: quarto-extension
-quarto-extension: $(QUARTO_EXT_DIR)/_extension.yml \
-		$(QUARTO_EXT_DIR)/$(FILTER_FILE)
-
-$(QUARTO_EXT_DIR):
-	mkdir -p $@
-
-## This may change, so re-create the file every time
-.PHONY: $(QUARTO_EXT_DIR)/_extension.yml
-$(QUARTO_EXT_DIR)/_extension.yml: _extensions/$(FILTER_NAME)
-	@printf 'Creating %s\n' $@
-	@printf 'name: %s\n' "$(EXT_NAME)" > $@
-	@printf 'author: %s\n' "$(USER_NAME)" >> $@
-	@printf 'version: %s\n'  "$(VERSION)" >> $@
-	@printf 'contributes:\n  filters:\n    - %s\n' $(FILTER_FILE) >> $@
-
-## The filter file must be below the quarto _extensions folder: a
-## symlink in the extension would not work due to the way in which
-## quarto installs extensions.
-$(QUARTO_EXT_DIR)/$(FILTER_FILE): $(FILTER_FILE) $(QUARTO_EXT_DIR)
-	if [ ! -L $(FILTER_FILE) ]; then \
-	    mv $(FILTER_FILE) $(QUARTO_EXT_DIR)/$(FILTER_FILE) && \
-	    ln -s $(QUARTO_EXT_DIR)/$(FILTER_FILE) $(FILTER_FILE); \
-	fi
 
 #
 # Release
