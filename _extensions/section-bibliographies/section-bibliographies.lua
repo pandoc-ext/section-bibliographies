@@ -129,9 +129,9 @@ end
 function setup_document (doc)
   -- save meta for other filter functions
   meta = doc.meta
-  section_refs_level = tonumber(meta["section-refs-level"]) or 1
+  section_refs_level = tonumber(meta["section-bibs-level"]) or 1
   orig_bibliography = meta.bibliography
-  meta.bibliography = meta['section-refs-bibliography'] or meta.bibliography
+  meta.bibliography = meta['section-bibs-bibliography'] or meta.bibliography
   local sections = utils.make_sections(true, nil, doc.blocks)
   return pandoc.Pandoc(sections, doc.meta)
 end

@@ -1,10 +1,16 @@
-Greetings, a Lua Filter Template
+Section Bibliographies Filter
 ==================================================================
 
 [![GitHub build status][CI badge]][CI workflow]
 
-Greetings is a friendly Lua filter that adds a welcoming message
-to the document.
+Pandoc filter that generates a bibliography for each top-level
+section / chapter.
+
+The filter allows the user to put bibliographies at the end of
+each section, containing only those references in the section. It
+works by splitting the document up into sections, and then
+treating each section as a separate document for *citeproc* to
+process.
 
 [CI badge]: https://img.shields.io/github/workflow/status/pandoc-ext/section-bibliographies/CI?logo=github
 [CI workflow]: https://github.com/pandoc-ext/section-bibliographies/actions/workflows/ci.yaml
@@ -18,10 +24,17 @@ be used with many publishing systems that are based on pandoc.
 
 ### Plain pandoc
 
-Pass the filter to pandoc via the `--lua-filter` (or `-L`) command
-line option.
+This filter interferes with the default operation of citeproc. The
+`citeproc` filter must either be run *before* this filter, or not
+at all. The `section-bibliographies.lua` filter calls `citeproc`
+as necessary. For example:
 
-    pandoc --lua-filter section-bibliographies.lua ...
+    pandoc input.md --citeproc --lua-filter section-refs.lua
+
+or
+
+    pandoc input.md --lua-filter section-refs.lua
+
 
 ### Quarto
 
@@ -52,6 +65,27 @@ output:
     pandoc_args: ['--lua-filter=section-bibliographies.lua']
 ---
 ```
+
+Configuration
+------------------------------------------------------------------
+
+The filter allows customization through these metadata fields:
+
+`section-bibs-level`
+:   This variable controls what level the biblography will occur
+    at the end of. The header of the generated references section
+    will be one level lower than the section that it appears on
+    (so if it occurs at the end of a level-1 section, it will
+    receive a level-2 header, and so on).
+
+`section-bibs-bibliography`
+:   Behaves like `bibliography` in the context of this filter.
+    This variable exists because pandoc automatically invokes
+    `citeproc` as the final filter if it is called with either
+    `--bibliography`, or if the `bibliography` metadata is given
+    via a command line option. Using `section-bibs-bibliography`
+    on the command line avoids this unwanted invocation.
+
 
 License
 ------------------------------------------------------------------
