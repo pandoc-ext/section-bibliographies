@@ -16,23 +16,17 @@ ifeq "$(VERSION)" ""
 VERSION = 0.0.0
 endif
 
-# Test that running the filter on the sample input document yields
-# the expected output.
-#
-# The automatic variable `$<` refers to the first dependency
-# (i.e., the filter file).
-test: $(FILTER_FILE) test/input.md test/test.yaml
-	$(PANDOC) --defaults test/test.yaml | \
-		$(DIFF) test/expected.native -
-
 # Ensure that the `test` target is run each time it's called.
 .PHONY: test
+test: test-default test-no-citeproc test-refs-name test-section-level
 
-# Re-generate the expected output. This file **must not** be a
-# dependency of the `test` target, as that would cause it to be
-# regenerated on each run, making the test pointless.
-test/expected.native: $(FILTER_FILE) test/input.md test/test.yaml
-	$(PANDOC) --defaults test/test.yaml --output=$@
+# Test that running the filter on the sample input document yields
+# the expected output.
+test-%: $(FILTER_FILE) test/input.md \
+		test/test.yaml \
+		test/test-%.yaml
+	$(PANDOC) --defaults test/test.yaml --defaults test/test-$*.yaml | \
+		$(DIFF) test/expected-$*.native -
 
 #
 # Website

@@ -1,0 +1,7 @@
+metadata:
+  bibliography: test/bibliography.bib
+  reference-section-title: Works Cited
+  section-bibs-level: 2
+
+filters:
+  - section-bibliographies.lua

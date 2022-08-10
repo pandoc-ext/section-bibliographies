@@ -1,0 +1,6 @@
+metadata:
+  bibliography: test/bibliography.bib
+  reference-section-title: Works Cited
+
+filters:
+  - section-bibliographies.lua

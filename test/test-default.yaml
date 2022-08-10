@@ -1,0 +1,6 @@
+metadata:
+  bibliography: test/bibliography.bib
+
+filters:
+  - type: citeproc
+  - {type: lua, path: section-bibliographies.lua}
