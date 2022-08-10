@@ -42,13 +42,18 @@ Users of Quarto can install this filter as an extension with
 
     quarto install extension tarleb/section-bibliographies
 
-and use it by adding `section-bibliographies` to the `filters` entry
-in their YAML header.
+and use it by adding `section-bibliographies` to the `filters`
+entry in their YAML header. It is recommended to use the
+`section-bib-bibliography` metadata value instead of the default
+`bibliography`, as this will minimize the interference of Quarto's
+default citation handling with this filter. See section
+[configuration](#configuration) for details.
 
 ``` yaml
 ---
 filters:
   - section-bibliographies
+section-bib-bibliography: my-bibliography.bib
 ---
 ```
 
