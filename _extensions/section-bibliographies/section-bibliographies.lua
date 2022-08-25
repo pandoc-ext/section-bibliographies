@@ -54,7 +54,9 @@ local function adjust_refs_components (div)
 end
 
 local function run_citeproc (doc)
-  if PANDOC_VERSION >= '2.11' then
+  if PANDOC_VERSION >= '2.19.1' then
+    return pandoc.utils.citeproc(doc)
+  elseif PANDOC_VERSION >= '2.11' then
     local args = {'--from=json', '--to=json', '--citeproc'}
     return run_json_filter(doc, 'pandoc', args)
   else
