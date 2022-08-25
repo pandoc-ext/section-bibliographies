@@ -22,6 +22,9 @@ Usage
 The filter modifies the internal document representation; it can
 be used with many publishing systems that are based on pandoc.
 
+Most users will want to set the `reference-section-title` metadata
+value to add a section heading to the reference section.
+
 ### Plain pandoc
 
 This filter interferes with the default operation of citeproc. The
@@ -43,17 +46,17 @@ Users of Quarto can install this filter as an extension with
     quarto install extension tarleb/section-bibliographies
 
 and use it by adding `section-bibliographies` to the `filters`
-entry in their YAML header. It is recommended to use the
-`section-bib-bibliography` metadata value instead of the default
-`bibliography`, as this will minimize the interference of Quarto's
-default citation handling with this filter. See section
-[configuration](#configuration) for details.
+entry in their YAML header. It is recommended to set the
+`citeproc: false` in the YAML header, as this minimizes
+interference with Quarto's default citation handling.
 
 ``` yaml
 ---
 filters:
   - section-bibliographies
-section-bib-bibliography: my-bibliography.bib
+bibliography: my-bibliography.bib
+reference-section-title: References
+citeproc: false
 ---
 ```
 
@@ -65,6 +68,7 @@ for details.
 
 ``` yaml
 ---
+reference-section-title: References
 output:
   word_document:
     pandoc_args: ['--lua-filter=section-bibliographies.lua']
