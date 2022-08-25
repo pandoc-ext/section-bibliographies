@@ -23,13 +23,23 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        pandoc:
+          - edge
+          - latest
+          - 2.17
+
+    container:
+      image: pandoc/core:${{ matrix.pandoc }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install pandoc
-        uses: pandoc/actions/setup@v1
+      - name: Install dependencies
+        run: apk add make
 
       - name: Test
         run: make test
