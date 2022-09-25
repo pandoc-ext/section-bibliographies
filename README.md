@@ -43,7 +43,7 @@ or
 
 Users of Quarto can install this filter as an extension with
 
-    quarto install extension tarleb/section-bibliographies
+    quarto install extension pandoc-ext/section-bibliographies
 
 and use it by adding `section-bibliographies` to the `filters`
 entry in their YAML header. It is recommended to set the
