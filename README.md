@@ -12,7 +12,7 @@ works by splitting the document up into sections, and then
 treating each section as a separate document for *citeproc* to
 process.
 
-[CI badge]: https://img.shields.io/github/workflow/status/pandoc-ext/section-bibliographies/CI?logo=github
+[CI badge]: https://img.shields.io/github/actions/workflow/status/pandoc-ext/section-bibliographies/ci.yaml?branch=main&logo=github
 [CI workflow]: https://github.com/pandoc-ext/section-bibliographies/actions/workflows/ci.yaml
 
 
