@@ -32,11 +32,11 @@ This filter interferes with the default operation of citeproc. The
 at all. The `section-bibliographies.lua` filter calls `citeproc`
 as necessary. For example:
 
-    pandoc input.md --citeproc --lua-filter section-refs.lua
+    pandoc input.md --citeproc --lua-filter section-bibliographies.lua
 
 or
 
-    pandoc input.md --lua-filter section-refs.lua
+    pandoc input.md --lua-filter section-bibliographies.lua
 
 
 ### Quarto
