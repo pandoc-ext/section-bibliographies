@@ -74,6 +74,12 @@ output:
     pandoc_args: ['--lua-filter=section-bibliographies.lua']
 ---
 ```
+**Please Note**: In some OS environments it might be necessary to use the complete absolute path to the .lua file for the filter, e.g.
+
+```
+filters:
+  - /home/user/_extensions/pandoc-ext/section-bibliographies/section-bibliographies.lua
+```
 
 Configuration
 ------------------------------------------------------------------
