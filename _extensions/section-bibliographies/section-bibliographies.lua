@@ -1,6 +1,6 @@
---- greetings.lua – turns any document into a friendly greeting
+--- section-bibliographies - chapter-wise reference sections
 ---
---- Copyright: © 2018 Jesse Rosenthal, 2020–2022 Albert Krewinkel
+--- Copyright: © 2018 Jesse Rosenthal, 2020–2023 Albert Krewinkel
 --- License: MIT – see LICENSE for details
 
 -- pandoc.utils.make_sections exists since pandoc 2.8
