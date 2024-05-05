@@ -5,3 +5,5 @@ metadata:
 filters:
   - type: citeproc
   - {type: lua, path: section-bibliographies.lua}
+  # This filter is used to unify refs divs across pandoc versions
+  - {type: lua, path: test/unify-refs-divs.lua}

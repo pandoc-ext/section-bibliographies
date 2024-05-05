@@ -150,7 +150,7 @@
 , Div
     ( "refs-1"
     , [ "references" , "csl-bib-body" , "hanging-indent" ]
-    , []
+    , [ ( "entry-spacing" , "0" ) ]
     )
     [ Div
         ( "ref-ainsworth:sheppard" , [ "csl-entry" ] , [] )
@@ -440,7 +440,7 @@
 , Div
     ( "refs-2"
     , [ "references" , "csl-bib-body" , "hanging-indent" ]
-    , []
+    , [ ( "entry-spacing" , "0" ) ]
     )
     [ Div
         ( "ref-cohen:jokes" , [ "csl-entry" ] , [] )
