@@ -1,4 +1,4 @@
-input-files: ["test/input.md"]
+input-files: ['test/input-unnumbered-section.md']
 metadata:
   bibliography: test/bibliography.bib
 

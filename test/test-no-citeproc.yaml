@@ -1,2 +1,3 @@
+input-files: ["test/input.md"]
 filters:
   - section-bibliographies.lua

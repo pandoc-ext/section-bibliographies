@@ -20,7 +20,7 @@ local orig_bibliography
 local function is_section_div (div)
   return div.t == 'Div'
     and div.classes[1] == 'section'
-    and div.attributes.number
+    and (div.attributes.number or div.classes:includes 'unnumbered')
 end
 
 local function section_header (div)
@@ -43,12 +43,14 @@ local function adjust_refs_components (div)
   local refs = blocks:find_if(function (b)
       return b.attr and b.identifier == 'refs'
   end)
+  local suffix = header.attributes.number
+    or pandoc.sha1(pandoc.utils.stringify(header.content))
   if bib_header then
-    bib_header.identifier = 'bibliography-' .. header.attributes.number
+    bib_header.identifier = 'bibliography-' .. suffix
     bib_header.level = header.level + 1
   end
   if refs and refs.identifier == 'refs' then
-    refs.identifier = 'refs-' .. header.attributes.number
+    refs.identifier = 'refs-' .. suffix
   end
   return div
 end

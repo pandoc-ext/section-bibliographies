@@ -18,11 +18,12 @@ endif
 
 # Ensure that the `test` target is run each time it's called.
 .PHONY: test
-test: test-default test-no-citeproc test-refs-name test-section-level
+test: test-default test-no-citeproc test-refs-name test-section-level \
+	test-unnumbered-section
 
 # Test that running the filter on the sample input document yields
 # the expected output.
-test-%: $(FILTER_FILE) test/input.md \
+test-%: $(FILTER_FILE) test/input.md test/input-unnumbered-section.md \
 		test/test.yaml \
 		test/test-%.yaml
 	$(PANDOC) --defaults test/test.yaml --defaults test/test-$*.yaml | \

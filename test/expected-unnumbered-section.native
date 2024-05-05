@@ -1,0 +1,221 @@
+[ Header
+    1 ( "preface" , [ "unnumbered" ] , [] ) [ Str "Preface" ]
+, Para
+    [ Str "text"
+    , Space
+    , Str "citing"
+    , Space
+    , Cite
+        [ Citation
+            { citationId = "kant:critique2"
+            , citationPrefix = []
+            , citationSuffix = []
+            , citationMode = AuthorInText
+            , citationNoteNum = 1
+            , citationHash = 0
+            }
+        ]
+        [ Str "Kant" , Space , Str "(2001)" ]
+    ]
+, Div
+    ( "refs-707ddefda8b9d501a1d63dad3fcb74d0cb28b51a"
+    , [ "references" , "csl-bib-body" , "hanging-indent" ]
+    , [ ( "entry-spacing" , "0" ) ]
+    )
+    [ Div
+        ( "ref-kant:critique2" , [ "csl-entry" ] , [] )
+        [ Para
+            [ Str "Kant,"
+            , Space
+            , Str "Immanuel."
+            , Space
+            , Str "2001."
+            , Space
+            , Emph
+                [ Str "Critique"
+                , Space
+                , Str "of"
+                , Space
+                , Str "Practical"
+                , Space
+                , Str "Reason"
+                ]
+            , Str "."
+            , Space
+            , Str "Edited"
+            , Space
+            , Str "and"
+            , Space
+            , Str "translated"
+            , Space
+            , Str "by"
+            , Space
+            , Str "Mary"
+            , Space
+            , Str "Gregor."
+            , Space
+            , Str "Cambridge,"
+            , Space
+            , Str "UK:"
+            , Space
+            , Str "Cambridge"
+            , Space
+            , Str "University"
+            , Space
+            , Str "Press."
+            ]
+        ]
+    ]
+, Header
+    1
+    ( "chapter-1" , [] , [] )
+    [ Str "Chapter" , Space , Str "1" ]
+, Para
+    [ Str "text"
+    , Space
+    , Str "citing"
+    , Space
+    , Cite
+        [ Citation
+            { citationId = "ainsworth:sheppard"
+            , citationPrefix = []
+            , citationSuffix = []
+            , citationMode = AuthorInText
+            , citationNoteNum = 2
+            , citationHash = 0
+            }
+        ]
+        [ Str "Ainsworth" , Space , Str "(1900)" ]
+    ]
+, Div
+    ( "refs-1"
+    , [ "references" , "csl-bib-body" , "hanging-indent" ]
+    , [ ( "entry-spacing" , "0" ) ]
+    )
+    [ Div
+        ( "ref-ainsworth:sheppard" , [ "csl-entry" ] , [] )
+        [ Para
+            [ Str "Ainsworth,"
+            , Space
+            , Str "William"
+            , Space
+            , Str "Harrison."
+            , Space
+            , Str "1900."
+            , Space
+            , Emph
+                [ Str "Jack"
+                , Space
+                , Str "Sheppard:"
+                , Space
+                , Str "A"
+                , Space
+                , Str "Romance"
+                ]
+            , Str "."
+            , Space
+            , Str "London:"
+            , Space
+            , Str "George"
+            , Space
+            , Str "Routledge"
+            , Space
+            , Str "&"
+            , Space
+            , Str "Sons."
+            ]
+        ]
+    ]
+, Header
+    1
+    ( "chapter-2" , [] , [] )
+    [ Str "Chapter" , Space , Str "2" ]
+, Para
+    [ Str "text"
+    , Space
+    , Str "citing"
+    , Space
+    , Cite
+        [ Citation
+            { citationId = "lukacs:european"
+            , citationPrefix = []
+            , citationSuffix = []
+            , citationMode = AuthorInText
+            , citationNoteNum = 3
+            , citationHash = 0
+            }
+        ]
+        [ Str "Luk\225cs" , Space , Str "(1989)" ]
+    ]
+, Div
+    ( "refs-2"
+    , [ "references" , "csl-bib-body" , "hanging-indent" ]
+    , [ ( "entry-spacing" , "0" ) ]
+    )
+    [ Div
+        ( "ref-lukacs:european" , [ "csl-entry" ] , [] )
+        [ Para
+            [ Str "Luk\225cs,"
+            , Space
+            , Str "Georg."
+            , Space
+            , Str "1989."
+            , Space
+            , Emph
+                [ Str "Studies"
+                , Space
+                , Str "in"
+                , Space
+                , Str "European"
+                , Space
+                , Str "Realism:"
+                , Space
+                , Str "A"
+                , Space
+                , Str "Sociological"
+                , Space
+                , Str "Survey"
+                , Space
+                , Str "of"
+                , Space
+                , Str "the"
+                , Space
+                , Str "Writings"
+                , Space
+                , Str "of"
+                , Space
+                , Str "Balzac,"
+                , Space
+                , Str "Stendhal,"
+                , Space
+                , Str "Zola,"
+                , Space
+                , Str "Tolstoy,"
+                , Space
+                , Str "Gorki,"
+                , Space
+                , Str "and"
+                , Space
+                , Str "Others"
+                ]
+            , Str "."
+            , Space
+            , Str "Translated"
+            , Space
+            , Str "by"
+            , Space
+            , Str "Edith"
+            , Space
+            , Str "Bone."
+            , Space
+            , Str "London:"
+            , Space
+            , Str "The"
+            , Space
+            , Str "Merlin"
+            , Space
+            , Str "Press."
+            ]
+        ]
+    ]
+]
