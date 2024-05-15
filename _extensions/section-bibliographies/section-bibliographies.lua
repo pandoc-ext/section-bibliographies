@@ -3,11 +3,11 @@
 --- Copyright: © 2018 Jesse Rosenthal, 2020–2024 Albert Krewinkel
 --- License: MIT – see LICENSE for details
 
--- pandoc.utils.make_sections exists since pandoc 2.8
-PANDOC_VERSION:must_be_at_least {2,8}
+-- pandoc.utils.citeproc exists since pandoc 2.19.1
+PANDOC_VERSION:must_be_at_least {2,19,1}
 
 local utils = require 'pandoc.utils'
-local run_json_filter = utils.run_json_filter
+local citeproc, stringify = utils.citeproc, utils.stringify
 
 --- The document's metadata
 local meta
@@ -44,7 +44,7 @@ local function adjust_refs_components (div)
       return b.attr and b.identifier == 'refs'
   end)
   local suffix = header.attributes.number
-    or pandoc.sha1(pandoc.utils.stringify(header.content))
+    or pandoc.sha1(stringify(header.content))
   if bib_header then
     bib_header.identifier = 'bibliography-' .. suffix
     bib_header.level = header.level + 1
@@ -53,17 +53,6 @@ local function adjust_refs_components (div)
     refs.identifier = 'refs-' .. suffix
   end
   return div
-end
-
-local function run_citeproc (doc)
-  if PANDOC_VERSION >= '2.19.1' then
-    return pandoc.utils.citeproc(doc)
-  elseif PANDOC_VERSION >= '2.11' then
-    local args = {'--from=json', '--to=json', '--citeproc'}
-    return run_json_filter(doc, 'pandoc', args)
-  else
-    return run_json_filter(doc, 'pandoc-citeproc', {FORMAT, '-q'})
-  end
 end
 
 --- Create a bibliography for a given section. This acts on all
@@ -90,7 +79,7 @@ local function create_section_bibliography (div)
     subsections = div.content:filter(is_section_div)
   end
   local tmp_doc = pandoc.Pandoc(blocks, meta)
-  local new_doc = run_citeproc(tmp_doc)
+  local new_doc = citeproc(tmp_doc)
   div.content = new_doc.blocks .. subsections
   return adjust_refs_components(div)
 end
