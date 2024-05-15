@@ -1,6 +1,6 @@
 --- section-bibliographies - chapter-wise reference sections
 ---
---- Copyright: © 2018 Jesse Rosenthal, 2020–2023 Albert Krewinkel
+--- Copyright: © 2018 Jesse Rosenthal, 2020–2024 Albert Krewinkel
 --- License: MIT – see LICENSE for details
 
 -- pandoc.utils.make_sections exists since pandoc 2.8
@@ -66,7 +66,7 @@ local function run_citeproc (doc)
   end
 end
 
---- Create a bibliography for a given topic. This acts on all
+--- Create a bibliography for a given section. This acts on all
 -- section divs at or above `section_refs_level`
 local function create_section_bibliography (div)
   -- don't do anything if there is no bibliography
