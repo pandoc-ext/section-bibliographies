@@ -29,6 +29,20 @@ test-%: $(FILTER_FILE) test/input.md test/input-unnumbered-section.md \
 	$(PANDOC) --defaults test/test.yaml --defaults test/test-$*.yaml | \
 		$(DIFF) test/expected-$*.native -
 
+# Update files that contain the expected test output
+.PHONY: update-expected update-%
+update-expected: update-default update-no-citeproc update-refs-name \
+	update-section-level update-unnumbered-section
+update-%: $(FILTER_FILE) \
+		test/input.md \
+		test/input-unnumbered-section.md \
+		test/test.yaml \
+		test/test-%.yaml
+	$(PANDOC) \
+	    --defaults=test/test.yaml \
+	    --defaults=test/test-$*.yaml \
+	    --output=test/expected-$*.native
+
 #
 # Website
 #
