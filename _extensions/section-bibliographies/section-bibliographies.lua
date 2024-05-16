@@ -26,12 +26,19 @@ end
 --- Returns the section heading when given a section div, and nil otherwise.
 -- @param div   a pandoc Block element
 -- @return heading element or nil
+-- @return suffix to be used with identifiers
 local function section_header (div)
   local header = div.content and div.content[1]
   local is_header = is_section_div(div)
     and header
     and header.t == 'Header'
-  return is_header and header or nil
+
+  if not is_header then
+    return nil, nil
+  end
+
+  local suffix = header.attributes.number or sha1(stringify(header.content))
+  return header, '--' .. suffix
 end
 
 --- Unwrap and remove section divs
@@ -48,7 +55,7 @@ local function flatten_sections (div)
 end
 
 local function adjust_refs_components (div)
-  local header = section_header(div)
+  local header, suffix = section_header(div)
   if not header then
     return div
   end
@@ -58,14 +65,12 @@ local function adjust_refs_components (div)
   local refs = div.content:find_if(function (b)
       return b.identifier == 'refs'
   end)
-  local suffix = header.attributes.number
-    or sha1(stringify(header.content))
   if bib_header then
-    bib_header.identifier = 'bibliography-' .. suffix
+    bib_header.identifier = 'bibliography' .. suffix
     bib_header.level = header.level + 1
   end
   if refs and refs.identifier == 'refs' then
-    refs.identifier = 'refs-' .. suffix
+    refs.identifier = 'refs' .. suffix
   end
   return div
 end
@@ -100,31 +105,47 @@ local function create_section_bibliography (meta, opts)
   newmeta.nocite = pandoc.Inlines{
     pandoc.Cite('@*', {pandoc.Citation('*', 'NormalCitation')})
   }
-  newmeta.references = utils.references(pandoc.Pandoc({}, newmeta))
+  local references = utils.references(pandoc.Pandoc({}, newmeta))
   newmeta.bibliography = nil
   newmeta.nocite = nil
 
   -- Don't do anything if there is no bibliography
-  if not next(newmeta.references) then
+  if not next(references) then
     return nil
   end
 
-  local function section_citeproc(section)
+  local function section_citeproc(section, suffix)
+    section = section:walk{
+      Cite = function (cite)
+        cite.citations = cite.citations:map(function(c)
+            c.id = c.id .. suffix
+            return c
+        end)
+        return cite
+      end
+    }
+    newmeta.references = deepcopy(references)
+    for i, ref in ipairs(newmeta.references) do
+      newmeta.references[i].id = ref.id .. suffix
+    end
     return citeproc(pandoc.Pandoc(section, newmeta)).blocks
   end
 
   local process_div
   process_div = function (div)
-    local header = section_header(div)
-    if not header or opts.level < header.level then
-      -- Don't do anything for lower level sections.
+    local header, suffix = section_header(div)
+    if not header or not suffix or opts.level < header.level then
+      -- Don't do anything for deeply-nested sections.
       return div, false
-    elseif opts.level == header.level then
-      div.content = section_citeproc(div.content)
+    end
+    if opts.level == header.level then
+      div.content = section_citeproc(div.content, suffix)
       return adjust_refs_components(div), false
     else
-      div.content = section_citeproc(div.content:filter(negate(is_section_div)))
-        .. div.content:filter(is_section_div):map(process_div)
+      local on_level = div.content:filter(negate(is_section_div))
+      local subsects = div.content:filter(is_section_div)
+      div.content = section_citeproc(on_level, suffix)
+        .. subsects:map(process_div)
       return adjust_refs_components(div), false
     end
   end

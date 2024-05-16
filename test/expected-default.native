@@ -22,7 +22,7 @@
     , Space
     , Cite
         [ Citation
-            { citationId = "ainsworth:sheppard"
+            { citationId = "ainsworth:sheppard--1"
             , citationPrefix = []
             , citationSuffix = [ Space , Str "27" ]
             , citationMode = NormalCitation
@@ -50,7 +50,7 @@
     , SoftBreak
     , Cite
         [ Citation
-            { citationId = "dames:physiology"
+            { citationId = "dames:physiology--1"
             , citationPrefix = []
             , citationSuffix = []
             , citationMode = NormalCitation
@@ -89,7 +89,7 @@
     , Space
     , Cite
         [ Citation
-            { citationId = "kant:critique2"
+            { citationId = "kant:critique2--1"
             , citationPrefix = []
             , citationSuffix = [ Space , Str "29" ]
             , citationMode = NormalCitation
@@ -113,7 +113,7 @@
     , Space
     , Cite
         [ Citation
-            { citationId = "altick:aldine"
+            { citationId = "altick:aldine--1"
             , citationPrefix = []
             , citationSuffix = [ Space , Str "20" ]
             , citationMode = NormalCitation
@@ -136,7 +136,7 @@
     , SoftBreak
     , Cite
         [ Citation
-            { citationId = "dames:physiology"
+            { citationId = "dames:physiology--1"
             , citationPrefix = []
             , citationSuffix = []
             , citationMode = NormalCitation
@@ -148,12 +148,12 @@
     , Str "."
     ]
 , Div
-    ( "refs-1"
+    ( "refs--1"
     , [ "references" , "csl-bib-body" , "hanging-indent" ]
     , [ ( "entry-spacing" , "0" ) ]
     )
     [ Div
-        ( "ref-ainsworth:sheppard" , [ "csl-entry" ] , [] )
+        ( "ref-ainsworth:sheppard--1" , [ "csl-entry" ] , [] )
         [ Para
             [ Str "Ainsworth,"
             , Space
@@ -186,7 +186,7 @@
             ]
         ]
     , Div
-        ( "ref-altick:aldine" , [ "csl-entry" ] , [] )
+        ( "ref-altick:aldine--1" , [ "csl-entry" ] , [] )
         [ Para
             [ Str "Altick,"
             , Space
@@ -240,7 +240,7 @@
             ]
         ]
     , Div
-        ( "ref-dames:physiology" , [ "csl-entry" ] , [] )
+        ( "ref-dames:physiology--1" , [ "csl-entry" ] , [] )
         [ Para
             [ Str "Dames,"
             , Space
@@ -289,7 +289,7 @@
             ]
         ]
     , Div
-        ( "ref-kant:critique2" , [ "csl-entry" ] , [] )
+        ( "ref-kant:critique2--1" , [ "csl-entry" ] , [] )
         [ Para
             [ Str "Kant,"
             , Space
@@ -352,7 +352,7 @@
     , Space
     , Cite
         [ Citation
-            { citationId = "lukacs:european"
+            { citationId = "lukacs:european--2"
             , citationPrefix = []
             , citationSuffix = [ Space , Str "125" ]
             , citationMode = NormalCitation
@@ -380,7 +380,7 @@
     , SoftBreak
     , Cite
         [ Citation
-            { citationId = "cohen:jokes"
+            { citationId = "cohen:jokes--2"
             , citationPrefix = []
             , citationSuffix = [ Space , Str "3" ]
             , citationMode = NormalCitation
@@ -419,7 +419,7 @@
     , Space
     , Cite
         [ Citation
-            { citationId = "trollope:autobiography"
+            { citationId = "trollope:autobiography--2"
             , citationPrefix = []
             , citationSuffix = [ Space , Str "392" ]
             , citationMode = NormalCitation
@@ -438,12 +438,12 @@
     , Str "."
     ]
 , Div
-    ( "refs-2"
+    ( "refs--2"
     , [ "references" , "csl-bib-body" , "hanging-indent" ]
     , [ ( "entry-spacing" , "0" ) ]
     )
     [ Div
-        ( "ref-cohen:jokes" , [ "csl-entry" ] , [] )
+        ( "ref-cohen:jokes--2" , [ "csl-entry" ] , [] )
         [ Para
             [ Str "Cohen,"
             , Space
@@ -478,7 +478,7 @@
             ]
         ]
     , Div
-        ( "ref-lukacs:european" , [ "csl-entry" ] , [] )
+        ( "ref-lukacs:european--2" , [ "csl-entry" ] , [] )
         [ Para
             [ Str "Luk\225cs,"
             , Space
@@ -543,7 +543,7 @@
             ]
         ]
     , Div
-        ( "ref-trollope:autobiography" , [ "csl-entry" ] , [] )
+        ( "ref-trollope:autobiography--2" , [ "csl-entry" ] , [] )
         [ Para
             [ Str "Trollope,"
             , Space

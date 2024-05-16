@@ -7,7 +7,8 @@
     , Space
     , Cite
         [ Citation
-            { citationId = "kant:critique2"
+            { citationId =
+                "kant:critique2--707ddefda8b9d501a1d63dad3fcb74d0cb28b51a"
             , citationPrefix = []
             , citationSuffix = []
             , citationMode = AuthorInText
@@ -18,12 +19,15 @@
         [ Str "Kant" , Space , Str "(2001)" ]
     ]
 , Div
-    ( "refs-707ddefda8b9d501a1d63dad3fcb74d0cb28b51a"
+    ( "refs--707ddefda8b9d501a1d63dad3fcb74d0cb28b51a"
     , [ "references" , "csl-bib-body" , "hanging-indent" ]
     , [ ( "entry-spacing" , "0" ) ]
     )
     [ Div
-        ( "ref-kant:critique2" , [ "csl-entry" ] , [] )
+        ( "ref-kant:critique2--707ddefda8b9d501a1d63dad3fcb74d0cb28b51a"
+        , [ "csl-entry" ]
+        , []
+        )
         [ Para
             [ Str "Kant,"
             , Space
@@ -77,7 +81,7 @@
     , Space
     , Cite
         [ Citation
-            { citationId = "ainsworth:sheppard"
+            { citationId = "ainsworth:sheppard--1"
             , citationPrefix = []
             , citationSuffix = []
             , citationMode = AuthorInText
@@ -88,12 +92,12 @@
         [ Str "Ainsworth" , Space , Str "(1900)" ]
     ]
 , Div
-    ( "refs-1"
+    ( "refs--1"
     , [ "references" , "csl-bib-body" , "hanging-indent" ]
     , [ ( "entry-spacing" , "0" ) ]
     )
     [ Div
-        ( "ref-ainsworth:sheppard" , [ "csl-entry" ] , [] )
+        ( "ref-ainsworth:sheppard--1" , [ "csl-entry" ] , [] )
         [ Para
             [ Str "Ainsworth,"
             , Space
@@ -137,7 +141,7 @@
     , Space
     , Cite
         [ Citation
-            { citationId = "lukacs:european"
+            { citationId = "lukacs:european--2"
             , citationPrefix = []
             , citationSuffix = []
             , citationMode = AuthorInText
@@ -148,12 +152,12 @@
         [ Str "Luk\225cs" , Space , Str "(1989)" ]
     ]
 , Div
-    ( "refs-2"
+    ( "refs--2"
     , [ "references" , "csl-bib-body" , "hanging-indent" ]
     , [ ( "entry-spacing" , "0" ) ]
     )
     [ Div
-        ( "ref-lukacs:european" , [ "csl-entry" ] , [] )
+        ( "ref-lukacs:european--2" , [ "csl-entry" ] , [] )
         [ Para
             [ Str "Luk\225cs,"
             , Space

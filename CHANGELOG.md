@@ -17,6 +17,9 @@ Release pending.
 -   The bibliography files are read just once, and not repeatedly
     for each section.
 
+-   Disambiguate reference identifiers. This avoids problems when
+    the same reference is cited in different sections.
+
 -   No longer cleanup previous citeproc runs by default. Set
     `section-bibliographies.cleanup-first` to true to restore the
     previous behavior.
