@@ -14,6 +14,9 @@ Release pending.
 
 -   Allow configuration via `section-bibliographies` metadata map.
 
+-   The bibliography files are read just once, and not repeatedly
+    for each section.
+
 ## v0.0.1
 
 Released 2023-08-10.

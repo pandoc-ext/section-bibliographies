@@ -93,11 +93,19 @@ end
 -- section divs at or above `opts.level`
 local function create_section_bibliography (meta, opts)
   local newmeta = deepcopy(meta)
+
+  -- Load bibliography files just once.
   newmeta.bibliography = deepcopy(opts.bibliography)
   newmeta.references = deepcopy(opts.references)
+  newmeta.nocite = pandoc.Inlines{
+    pandoc.Cite('@*', {pandoc.Citation('*', 'NormalCitation')})
+  }
+  newmeta.references = utils.references(pandoc.Pandoc({}, newmeta))
+  newmeta.bibliography = nil
+  newmeta.nocite = nil
 
   -- Don't do anything if there is no bibliography
-  if not newmeta.bibliography and not newmeta.references then
+  if not next(newmeta.references) then
     return nil
   end
 
