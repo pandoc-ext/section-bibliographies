@@ -12,6 +12,8 @@ Release pending.
 -   Rewrote and restructured filter, making use of newer pandoc
     features.
 
+-   Allow configuration via `section-bibliographies` metadata map.
+
 ## v0.0.1
 
 Released 2023-08-10.

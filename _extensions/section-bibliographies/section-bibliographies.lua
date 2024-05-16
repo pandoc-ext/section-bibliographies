@@ -85,7 +85,7 @@ local function deepcopy (tbl)
 end
 
 --- Create a bibliography for a given section. This acts on all
--- section divs at or above `section_refs_level`
+-- section divs at or above `opts.level`
 local function create_section_bibliography (meta, opts)
   local newmeta = deepcopy(meta)
   newmeta.bibliography = deepcopy(opts.bibliography)
@@ -138,9 +138,9 @@ local remove_pandoc_citeproc_results = {
 
 --- Create an options table from document metadata.
 local function get_options (meta)
-  local opts = {}
+  local opts = meta['section-bibliographies'] or {}
   opts.bibliography = opts.bibliography
-    or meta['section-bibliographies']
+    or meta['section-bibs-bibliography']
     or meta['bibliography']
   opts.level = opts.level
     or tonumber(meta['section-bibs-level'])

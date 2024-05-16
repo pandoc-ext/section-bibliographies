@@ -60,7 +60,9 @@ citeproc: false
 ---
 ```
 
-**Please Note**: In some OS environments it might be necessary to use the complete absolute path to the .lua file for the filter, e.g.
+**Please Note**: In some OS environments it might be necessary to
+use the complete absolute path to the `.lua` file for the filter,
+e.g.
 
 ```
 filters:
@@ -85,22 +87,32 @@ output:
 Configuration
 ------------------------------------------------------------------
 
-The filter allows customization through these metadata fields:
+The filter allows customization through metadata fields, all
+nested below the `section-bibliographies` value:
 
-`section-bibs-level`
+`section-bibiliograpies.level`
 :   This variable controls what level the biblography will occur
     at the end of. The header of the generated references section
     will be one level lower than the section that it appears on
     (so if it occurs at the end of a level-1 section, it will
     receive a level-2 header, and so on).
 
-`section-bibs-bibliography`
+`section-bibliographies.bibliography`
 :   Behaves like `bibliography` in the context of this filter.
     This variable exists because pandoc automatically invokes
     `citeproc` as the final filter if it is called with either
     `--bibliography`, or if the `bibliography` metadata is given
     via a command line option. Using `section-bibs-bibliography`
     on the command line avoids this unwanted invocation.
+
+`section-bibliographies.references`
+:   Behaves like `references` in the context of this filter.
+
+The metadata fields `section-bibs-level` and
+`section-bibs-bibliography` have the same effect as the nested
+`level` and `bibliography` values, respectively. This is for for
+backwards compatibility. The old names are deprecated and should
+no longer be used.
 
 
 License
