@@ -69,9 +69,9 @@ _site/$(FILTER_FILE): $(FILTER_FILE)
 # Release
 #
 .PHONY: release
-release: quarto-extension
-	git commit -am "Release $(FILTER_NAME) $(VERSION)"
-	git tag v$(VERSION) -m "$(FILTER_NAME) $(VERSION)"
+release:
+	git commit --amend --message "Release $(FILTER_NAME) $(VERSION)"
+	git tag --sign v$(VERSION) --message "$(FILTER_NAME) $(VERSION)"
 
 #
 # Clean
