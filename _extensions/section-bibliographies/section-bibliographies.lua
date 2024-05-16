@@ -84,6 +84,11 @@ local function deepcopy (tbl)
   return copy
 end
 
+-- negate a property
+local negate = function (property)
+  return function (x) return not property(x) end
+end
+
 --- Create a bibliography for a given section. This acts on all
 -- section divs at or above `opts.level`
 local function create_section_bibliography (meta, opts)
@@ -96,29 +101,27 @@ local function create_section_bibliography (meta, opts)
     return nil
   end
 
-  return function (div)
+  local function section_citeproc(section)
+    return citeproc(pandoc.Pandoc(section, newmeta)).blocks
+  end
+
+  local process_div
+  process_div = function (div)
     local header = section_header(div)
-    -- Blocks for which a bibliography will be generated
-    local blocks
-    -- Blocks that are left alone
-    local subsections
     if not header or opts.level < header.level then
       -- Don't do anything for lower level sections.
-      return nil
+      return div, false
     elseif opts.level == header.level then
-      blocks = div.content
-      subsections = List:new{}
+      div.content = section_citeproc(div.content)
+      return adjust_refs_components(div), false
     else
-      blocks = div.content:filter(function (b)
-          return not is_section_div(b)
-      end)
-      subsections = div.content:filter(is_section_div)
+      div.content = section_citeproc(div.content:filter(negate(is_section_div)))
+        .. div.content:filter(is_section_div):map(process_div)
+      return adjust_refs_components(div), false
     end
-    local tmp_doc = pandoc.Pandoc(blocks, newmeta)
-    local new_doc = citeproc(tmp_doc)
-    div.content = new_doc.blocks .. subsections
-    return adjust_refs_components(div)
   end
+
+  return process_div
 end
 
 --- Filter to the references div and bibliography header added by
@@ -157,9 +160,12 @@ return {
       local opts = get_options(doc.meta)
       doc = doc:walk(remove_pandoc_citeproc_results)
       -- Setup the document for further processing by wrapping all
-      -- sections in Div elements.
+      -- sections in Div elements, but undo that after.
       doc.blocks = make_sections(doc, {number_sections=true})
-        :walk{Div = create_section_bibliography(doc.meta, opts)}
+        :walk{
+          traverse = 'topdown',
+          Div = create_section_bibliography(doc.meta, opts)
+        }
         :walk{Div = flatten_sections}
       return doc
     end
