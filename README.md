@@ -90,6 +90,10 @@ Configuration
 The filter allows customization through metadata fields, all
 nested below the `section-bibliographies` value:
 
+`section-bibiliograpies.cleanup-first`
+:   Remove the reference section added by a previous `citeproc`
+    run. The default is `false`.
+
 `section-bibiliograpies.level`
 :   This variable controls what level the biblography will occur
     at the end of. The header of the generated references section

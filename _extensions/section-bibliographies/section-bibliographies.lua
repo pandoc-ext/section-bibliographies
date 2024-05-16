@@ -166,7 +166,10 @@ return {
   {
     Pandoc = function (doc)
       local opts = get_options(doc.meta)
-      doc = doc:walk(remove_pandoc_citeproc_results)
+      if opts['cleanup-first'] then
+        -- clear results of a previous citeproc run
+        doc = doc:walk(remove_pandoc_citeproc_results)
+      end
       -- Setup the document for further processing by wrapping all
       -- sections in Div elements, but undo that after.
       doc.blocks = make_sections(doc, {number_sections=true})

@@ -17,6 +17,10 @@ Release pending.
 -   The bibliography files are read just once, and not repeatedly
     for each section.
 
+-   No longer cleanup previous citeproc runs by default. Set
+    `section-bibliographies.cleanup-first` to true to restore the
+    previous behavior.
+
 ## v0.0.1
 
 Released 2023-08-10.

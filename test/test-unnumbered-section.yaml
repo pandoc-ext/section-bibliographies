@@ -1,6 +1,8 @@
 input-files: ['test/input-unnumbered-section.md']
 metadata:
   bibliography: test/bibliography.bib
+  section-bibliographies:
+    cleanup-first: true
 
 filters:
   - type: citeproc
