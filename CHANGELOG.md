@@ -7,7 +7,7 @@ Versioning][].
 
 ## v1.0.0
 
-Release pending.
+Released 2024-05-17.
 
 -   Rewrote and restructured filter, making use of newer pandoc
     features.
