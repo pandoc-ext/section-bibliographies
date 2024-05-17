@@ -127,7 +127,7 @@ local function create_section_bibliography (meta, opts)
         return cite
       end,
       Div = function (div)
-        if div.classes:includes 'sectionrefs' and not next(div.content) then
+        if div.classes:includes 'sectionrefs' then
           div.identifier = 'refs'
           return div
         end

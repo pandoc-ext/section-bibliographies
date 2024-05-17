@@ -122,10 +122,10 @@ no longer be used.
 Bibliography placement
 ------------------------------------------------------------------
 
-Empty Div elements with class `sectionrefs` can be used to
-manually place the bibliography. The filter will use the div as
-the container for the list of references, similar to how Div's
-with identifier `refs` are be used by plain citeproc.
+Div elements with class `sectionrefs` can be used to manually
+place the bibliography. The filter will use the div as the
+container for the list of references, similar to how Div's with
+identifier `refs` are be used by plain citeproc.
 
 If the `sectionrefs` div is nested below another heading, then
 that heading must be marked with the `sectionbibliography` class,
