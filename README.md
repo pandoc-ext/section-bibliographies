@@ -119,6 +119,36 @@ backwards compatibility. The old names are deprecated and should
 no longer be used.
 
 
+Bibliography placement
+------------------------------------------------------------------
+
+Empty Div elements with class `sectionrefs` can be used to
+manually place the bibliography. The filter will use the div as
+the container for the list of references, similar to how Div's
+with identifier `refs` are be used by plain citeproc.
+
+If the `sectionrefs` div is nested below another heading, then
+that heading must be marked with the `sectionbibliography` class,
+or otherwise it might be ignored.
+
+``` markdown
+# Here is one section
+
+This reference to [@cohen:jokes] will be listed under [my refs].
+
+## A subsection
+
+Here is a not very interesting subsection.
+
+## Bibliography {.sectionbibliography}
+
+Some extra comments on the bibliography can go here.
+
+::: {.sectionrefs}
+:::
+```
+
+
 License
 ------------------------------------------------------------------
 

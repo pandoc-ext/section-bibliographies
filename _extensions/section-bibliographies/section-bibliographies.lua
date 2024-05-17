@@ -59,20 +59,23 @@ local function adjust_refs_components (div)
   if not header then
     return div
   end
-  local bib_header = div.content:find_if(function (b)
-      return b.identifier == 'bibliography'
-  end)
-  local refs = div.content:find_if(function (b)
-      return b.identifier == 'refs'
-  end)
-  if bib_header then
-    bib_header.identifier = 'bibliography' .. suffix
-    bib_header.level = header.level + 1
-  end
-  if refs and refs.identifier == 'refs' then
-    refs.identifier = 'refs' .. suffix
-  end
-  return div
+
+  return div:walk {
+    traverse = 'topdown',
+    Header = function (h)
+      if h.identifier == 'bibliography' then
+        h.identifier = 'bibliography' .. suffix
+        h.level = header.level + 1
+        return h
+      end
+    end,
+    Div = function (d)
+      if d.identifier == 'refs' then
+        d.identifier = 'refs' .. suffix
+        return d
+      end
+    end
+  }
 end
 
 --- Create a deep copy of a table.
@@ -115,13 +118,19 @@ local function create_section_bibliography (meta, opts)
   end
 
   local function section_citeproc(section, suffix)
-    section = section:walk{
+    section = pandoc.Blocks(section):walk{
       Cite = function (cite)
         cite.citations = cite.citations:map(function(c)
             c.id = c.id .. suffix
             return c
         end)
         return cite
+      end,
+      Div = function (div)
+        if div.classes:includes 'sectionrefs' and not next(div.content) then
+          div.identifier = 'refs'
+          return div
+        end
       end
     }
     newmeta.references = deepcopy(references)
@@ -137,15 +146,31 @@ local function create_section_bibliography (meta, opts)
     if not header or not suffix or opts.level < header.level then
       -- Don't do anything for deeply-nested sections.
       return div, false
-    end
-    if opts.level == header.level then
+    elseif opts.level == header.level then
       div.content = section_citeproc(div.content, suffix)
       return adjust_refs_components(div), false
     else
-      local on_level = div.content:filter(negate(is_section_div))
-      local subsects = div.content:filter(is_section_div)
-      div.content = section_citeproc(on_level, suffix)
-        .. subsects:map(process_div)
+      -- Replace subsections, which we don't want to process, with
+      -- placeholder blocks.
+      local subsections = {}
+      local subsection_to_placeholder = function (blk, i)
+        local subh = section_header(blk)
+        if subh and not subh.classes:includes 'sectionbibliography' then
+          subsections[i] = blk
+          return pandoc.RawBlock('placeholder', tostring(i))
+        end
+        return blk
+      end
+      -- replace placeholders with processed subsections
+      local restore_from_placeholder = function (blk)
+        if blk.t == 'RawBlock' and blk.format == 'placeholder' then
+          return process_div(subsections[tonumber(blk.text)])
+        end
+        return blk
+      end
+      div.content = div.content:map(subsection_to_placeholder)
+      div.content = section_citeproc(div.content, suffix)
+      div.content = div.content:map(restore_from_placeholder)
       return adjust_refs_components(div), false
     end
   end

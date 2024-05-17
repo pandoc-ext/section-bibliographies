@@ -9,6 +9,39 @@
     , Space
     , Str "section"
     ]
+, Para
+    [ Str "This"
+    , Space
+    , Str "reference"
+    , Space
+    , Str "to"
+    , Space
+    , Cite
+        [ Citation
+            { citationId = "cohen:jokes--1"
+            , citationPrefix = []
+            , citationSuffix = []
+            , citationMode = NormalCitation
+            , citationNoteNum = 1
+            , citationHash = 0
+            }
+        ]
+        [ Str "(Cohen" , Space , Str "1999)" ]
+    , Space
+    , Str "will"
+    , Space
+    , Str "be"
+    , Space
+    , Str "listed"
+    , Space
+    , Str "under"
+    , Space
+    , Link
+        ( "" , [] , [] )
+        [ Str "my" , Space , Str "refs" ]
+        ( "#my-refs" , "" )
+    , Str "."
+    ]
 , Header
     2
     ( "a-subsection" , [] , [] )
@@ -26,7 +59,7 @@
             , citationPrefix = []
             , citationSuffix = [ Space , Str "27" ]
             , citationMode = NormalCitation
-            , citationNoteNum = 1
+            , citationNoteNum = 2
             , citationHash = 0
             }
         ]
@@ -54,7 +87,7 @@
             , citationPrefix = []
             , citationSuffix = []
             , citationMode = NormalCitation
-            , citationNoteNum = 2
+            , citationNoteNum = 3
             , citationHash = 0
             }
         ]
@@ -93,7 +126,7 @@
             , citationPrefix = []
             , citationSuffix = [ Space , Str "29" ]
             , citationMode = NormalCitation
-            , citationNoteNum = 3
+            , citationNoteNum = 4
             , citationHash = 0
             }
         ]
@@ -101,12 +134,14 @@
     , Str "."
     ]
 , Header
-    3
-    ( "bibliography--1.1" , [ "unnumbered" ] , [] )
-    [ Str "Works Cited" ]
+    3 ( "my-refs" , [] , [] ) [ Str "My" , Space , Str "refs" ]
 , Div
     ( "refs--1.1"
-    , [ "references" , "csl-bib-body" , "hanging-indent" ]
+    , [ "sectionrefs"
+      , "references"
+      , "csl-bib-body"
+      , "hanging-indent"
+      ]
     , [ ( "entry-spacing" , "0" ) ]
     )
     [ Div
@@ -235,6 +270,14 @@
             ]
         ]
     ]
+, Header 3 ( "outro" , [] , [] ) [ Str "Outro" ]
+, Para
+    [ Str "Some"
+    , Space
+    , Str "more"
+    , Space
+    , Str "comments."
+    ]
 , Header
     2
     ( "another-subsection." , [] , [] )
@@ -252,7 +295,7 @@
             , citationPrefix = []
             , citationSuffix = [ Space , Str "20" ]
             , citationMode = NormalCitation
-            , citationNoteNum = 4
+            , citationNoteNum = 5
             , citationHash = 0
             }
         ]
@@ -275,7 +318,7 @@
             , citationPrefix = []
             , citationSuffix = []
             , citationMode = NormalCitation
-            , citationNoteNum = 5
+            , citationNoteNum = 6
             , citationHash = 0
             }
         ]
@@ -396,6 +439,76 @@
         ]
     ]
 , Header
+    2
+    ( "this-sections-bibliography"
+    , [ "sectionbibliography" ]
+    , []
+    )
+    [ Str "This"
+    , Space
+    , Str "section\8217s"
+    , Space
+    , Str "bibliography"
+    ]
+, Div
+    ( "refs--1"
+    , [ "sectionrefs"
+      , "references"
+      , "csl-bib-body"
+      , "hanging-indent"
+      ]
+    , [ ( "entry-spacing" , "0" ) ]
+    )
+    [ Div
+        ( "ref-cohen:jokes--1" , [ "csl-entry" ] , [] )
+        [ Para
+            [ Str "Cohen,"
+            , Space
+            , Str "Ted."
+            , Space
+            , Str "1999."
+            , Space
+            , Emph
+                [ Str "Jokes:"
+                , Space
+                , Str "Philosophical"
+                , Space
+                , Str "Thoughts"
+                , Space
+                , Str "on"
+                , Space
+                , Str "Joking"
+                , Space
+                , Str "Matters"
+                ]
+            , Str "."
+            , Space
+            , Str "Chicago:"
+            , Space
+            , Str "University"
+            , Space
+            , Str "of"
+            , Space
+            , Str "Chicago"
+            , Space
+            , Str "Press."
+            ]
+        ]
+    ]
+, Header
+    2
+    ( "other-comments" , [] , [] )
+    [ Str "Other" , Space , Str "comments" ]
+, Para
+    [ Str "This"
+    , Space
+    , Str "is"
+    , Space
+    , Str "not"
+    , Space
+    , Str "important."
+    ]
+, Header
     1
     ( "here-is-another-section" , [] , [] )
     [ Str "Here"
@@ -419,7 +532,7 @@
             , citationPrefix = []
             , citationSuffix = [ Space , Str "125" ]
             , citationMode = NormalCitation
-            , citationNoteNum = 6
+            , citationNoteNum = 7
             , citationHash = 0
             }
         ]
@@ -447,7 +560,7 @@
             , citationPrefix = []
             , citationSuffix = [ Space , Str "3" ]
             , citationMode = NormalCitation
-            , citationNoteNum = 7
+            , citationNoteNum = 8
             , citationHash = 0
             }
         ]
@@ -486,7 +599,7 @@
             , citationPrefix = []
             , citationSuffix = [ Space , Str "392" ]
             , citationMode = NormalCitation
-            , citationNoteNum = 8
+            , citationNoteNum = 9
             , citationHash = 0
             }
         ]

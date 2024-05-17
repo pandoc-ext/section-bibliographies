@@ -1,4 +1,4 @@
-input-files: ["test/input.md"]
+input-files: ["test/input-section-level.md"]
 metadata:
   bibliography: test/bibliography.bib
   reference-section-title: Works Cited
