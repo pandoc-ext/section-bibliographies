@@ -1,0 +1,12 @@
+input-files: ["test/input-minlevel.md"]
+metadata:
+  bibliography: test/bibliography.bib
+  # Generate bibliographies only for level-2 sections.
+  section-bibliographies:
+    level: 2
+    minlevel: 2
+
+filters:
+  - section-bibliographies.lua
+  # This filter is used to unify refs divs across pandoc versions
+  - {type: lua, path: test/unify-refs-divs.lua}

@@ -1,0 +1,367 @@
+[ Header
+    1
+    ( "here-is-one-section" , [] , [] )
+    [ Str "Here"
+    , Space
+    , Str "is"
+    , Space
+    , Str "one"
+    , Space
+    , Str "section"
+    ]
+, Para
+    [ Str "No" , Space , Str "references" , Space , Str "here" ]
+, Header
+    2
+    ( "a-subsection" , [] , [] )
+    [ Str "A" , Space , Str "subsection" ]
+, Para
+    [ Str "Here"
+    , Space
+    , Str "is"
+    , Space
+    , Str "something"
+    , Space
+    , Cite
+        [ Citation
+            { citationId = "ainsworth:sheppard--1.1"
+            , citationPrefix = []
+            , citationSuffix = [ Space , Str "27" ]
+            , citationMode = NormalCitation
+            , citationNoteNum = 1
+            , citationHash = 0
+            }
+        ]
+        [ Str "(Ainsworth"
+        , Space
+        , Str "1900,"
+        , Space
+        , Str "27)"
+        ]
+    , Str "."
+    , Space
+    , Str "And"
+    , Space
+    , Str "here"
+    , Space
+    , Str "is"
+    , Space
+    , Str "something"
+    , Space
+    , Str "else"
+    , SoftBreak
+    , Cite
+        [ Citation
+            { citationId = "dames:physiology--1.1"
+            , citationPrefix = []
+            , citationSuffix = []
+            , citationMode = NormalCitation
+            , citationNoteNum = 2
+            , citationHash = 0
+            }
+        ]
+        [ Str "(Dames" , Space , Str "2007)" ]
+    , Str "."
+    , Space
+    , Str "Finally,"
+    , Space
+    , Str "we"
+    , Space
+    , Str "want"
+    , Space
+    , Str "to"
+    , Space
+    , Str "make"
+    , Space
+    , Str "sure"
+    , Space
+    , Str "that"
+    , Space
+    , Str "we"
+    , Space
+    , Str "have"
+    , Space
+    , Str "one"
+    , Space
+    , Str "last"
+    , SoftBreak
+    , Str "citation"
+    , Space
+    , Str "here"
+    , Space
+    , Cite
+        [ Citation
+            { citationId = "kant:critique2--1.1"
+            , citationPrefix = []
+            , citationSuffix = [ Space , Str "29" ]
+            , citationMode = NormalCitation
+            , citationNoteNum = 3
+            , citationHash = 0
+            }
+        ]
+        [ Str "(Kant" , Space , Str "2001," , Space , Str "29)" ]
+    , Str "."
+    ]
+, Header
+    3 ( "my-refs" , [] , [] ) [ Str "My" , Space , Str "refs" ]
+, Div
+    ( "refs--1.1"
+    , [ "sectionrefs"
+      , "references"
+      , "csl-bib-body"
+      , "hanging-indent"
+      ]
+    , [ ( "entry-spacing" , "0" ) ]
+    )
+    [ Div
+        ( "ref-ainsworth:sheppard--1.1" , [ "csl-entry" ] , [] )
+        [ Para
+            [ Str "Ainsworth,"
+            , Space
+            , Str "William"
+            , Space
+            , Str "Harrison."
+            , Space
+            , Str "1900."
+            , Space
+            , Emph
+                [ Str "Jack"
+                , Space
+                , Str "Sheppard:"
+                , Space
+                , Str "A"
+                , Space
+                , Str "Romance"
+                ]
+            , Str "."
+            , Space
+            , Str "London:"
+            , Space
+            , Str "George"
+            , Space
+            , Str "Routledge"
+            , Space
+            , Str "&"
+            , Space
+            , Str "Sons."
+            ]
+        ]
+    , Div
+        ( "ref-dames:physiology--1.1" , [ "csl-entry" ] , [] )
+        [ Para
+            [ Str "Dames,"
+            , Space
+            , Str "Nicholas."
+            , Space
+            , Str "2007."
+            , Space
+            , Emph
+                [ Str "The"
+                , Space
+                , Str "Physiology"
+                , Space
+                , Str "of"
+                , Space
+                , Str "the"
+                , Space
+                , Str "Novel:"
+                , Space
+                , Str "Reading,"
+                , Space
+                , Str "Neural"
+                , Space
+                , Str "Science,"
+                , Space
+                , Str "and"
+                , Space
+                , Str "the"
+                , Space
+                , Str "Form"
+                , Space
+                , Str "of"
+                , Space
+                , Str "Victorian"
+                , Space
+                , Str "Fiction"
+                ]
+            , Str "."
+            , Space
+            , Str "Oxford:"
+            , Space
+            , Str "Oxford"
+            , Space
+            , Str "University"
+            , Space
+            , Str "Press."
+            ]
+        ]
+    , Div
+        ( "ref-kant:critique2--1.1" , [ "csl-entry" ] , [] )
+        [ Para
+            [ Str "Kant,"
+            , Space
+            , Str "Immanuel."
+            , Space
+            , Str "2001."
+            , Space
+            , Emph
+                [ Str "Critique"
+                , Space
+                , Str "of"
+                , Space
+                , Str "Practical"
+                , Space
+                , Str "Reason"
+                ]
+            , Str "."
+            , Space
+            , Str "Edited"
+            , Space
+            , Str "and"
+            , Space
+            , Str "translated"
+            , Space
+            , Str "by"
+            , Space
+            , Str "Mary"
+            , Space
+            , Str "Gregor."
+            , Space
+            , Str "Cambridge,"
+            , Space
+            , Str "UK:"
+            , Space
+            , Str "Cambridge"
+            , Space
+            , Str "University"
+            , Space
+            , Str "Press."
+            ]
+        ]
+    ]
+, Header 3 ( "outro" , [] , [] ) [ Str "Outro" ]
+, Para
+    [ Str "Some"
+    , Space
+    , Str "more"
+    , Space
+    , Str "comments."
+    ]
+, Header
+    2
+    ( "other-comments" , [] , [] )
+    [ Str "Other" , Space , Str "comments" ]
+, Para
+    [ Str "This"
+    , Space
+    , Str "is"
+    , Space
+    , Str "not"
+    , Space
+    , Str "important."
+    ]
+, Header
+    1
+    ( "here-is-another-section" , [] , [] )
+    [ Str "Here"
+    , Space
+    , Str "is"
+    , Space
+    , Str "another"
+    , Space
+    , Str "section"
+    ]
+, Para
+    [ Str "These"
+    , Space
+    , Str "references"
+    , Space
+    , Str "won\8217t"
+    , Space
+    , Str "be"
+    , Space
+    , Str "resolved."
+    ]
+, Para
+    [ Str "Here"
+    , Space
+    , Str "is"
+    , Space
+    , Str "something"
+    , Space
+    , Cite
+        [ Citation
+            { citationId = "lukacs:european"
+            , citationPrefix = []
+            , citationSuffix = [ Space , Str "125" ]
+            , citationMode = NormalCitation
+            , citationNoteNum = 4
+            , citationHash = 0
+            }
+        ]
+        [ Str "[@lukacs:european" , Space , Str "125]" ]
+    , Str "."
+    , Space
+    , Str "And"
+    , Space
+    , Str "here"
+    , Space
+    , Str "is"
+    , Space
+    , Str "something"
+    , Space
+    , Str "else"
+    , SoftBreak
+    , Cite
+        [ Citation
+            { citationId = "cohen:jokes"
+            , citationPrefix = []
+            , citationSuffix = [ Space , Str "3" ]
+            , citationMode = NormalCitation
+            , citationNoteNum = 5
+            , citationHash = 0
+            }
+        ]
+        [ Str "[@cohen:jokes" , Space , Str "3]" ]
+    , Str "."
+    , Space
+    , Str "Finally,"
+    , Space
+    , Str "we"
+    , Space
+    , Str "want"
+    , Space
+    , Str "to"
+    , Space
+    , Str "make"
+    , Space
+    , Str "sure"
+    , Space
+    , Str "that"
+    , Space
+    , Str "we"
+    , Space
+    , Str "have"
+    , Space
+    , Str "one"
+    , Space
+    , Str "last"
+    , SoftBreak
+    , Str "citation"
+    , Space
+    , Str "here"
+    , Space
+    , Cite
+        [ Citation
+            { citationId = "trollope:autobiography"
+            , citationPrefix = []
+            , citationSuffix = [ Space , Str "392" ]
+            , citationMode = NormalCitation
+            , citationNoteNum = 6
+            , citationHash = 0
+            }
+        ]
+        [ Str "[@trollope:autobiography" , Space , Str "392]" ]
+    , Str "."
+    ]
+]

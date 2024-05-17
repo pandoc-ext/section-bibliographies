@@ -101,6 +101,11 @@ nested below the `section-bibliographies` value:
     (so if it occurs at the end of a level-1 section, it will
     receive a level-2 header, and so on).
 
+`section-bibiliograpies.minlevel`
+:   Sets the minimum section level at which bibliographies will be
+    produced. The default is 1. Higher numbers will leave
+    top-level sections unprocessed.
+
 `section-bibliographies.bibliography`
 :   Behaves like `bibliography` in the context of this filter.
     This variable exists because pandoc automatically invokes

@@ -146,6 +146,10 @@ local function create_section_bibliography (meta, opts)
     if not header or not suffix or opts.level < header.level then
       -- Don't do anything for deeply-nested sections.
       return div, false
+    elseif header.level < opts.minlevel then
+      -- Don't process sections above minlevel
+      div.content = div.content:map(process_div)
+      return div, false
     elseif opts.level == header.level then
       div.content = section_citeproc(div.content, suffix)
       return adjust_refs_components(div), false
@@ -199,11 +203,19 @@ local function get_options (meta)
   opts.bibliography = opts.bibliography
     or meta['section-bibs-bibliography']
     or meta['bibliography']
-  opts.level = opts.level
+  opts.level = tonumber(opts.level)
     or tonumber(meta['section-bibs-level'])
+    or 1
+  opts.minlevel = tonumber(opts.minlevel)
     or 1
   opts.references = opts.references
     or meta['references']
+
+  -- sanity check
+  if opts.level < opts.minlevel then
+    warn('level cannot be smaller than minlevel, setting minlevel = level')
+    opts.minlevel = opts.level
+  end
 
   return opts
 end

@@ -19,7 +19,7 @@ endif
 # Ensure that the `test` target is run each time it's called.
 .PHONY: test
 test: test-default test-no-citeproc test-refs-name test-section-level \
-	test-unnumbered-section
+	test-unnumbered-section test-minlevel
 
 # Test that running the filter on the sample input document yields
 # the expected output.
@@ -32,7 +32,7 @@ test-%: $(FILTER_FILE) test/input.md test/input-unnumbered-section.md \
 # Update files that contain the expected test output
 .PHONY: update-expected update-%
 update-expected: update-default update-no-citeproc update-refs-name \
-	update-section-level update-unnumbered-section
+	update-section-level update-unnumbered-section update-minlevel
 update-%: $(FILTER_FILE) \
 		test/input.md \
 		test/input-unnumbered-section.md \
