@@ -46,13 +46,18 @@ Users of Quarto can install this filter as an extension with
     quarto install extension pandoc-ext/section-bibliographies
 
 and use it by adding `section-bibliographies` to the `filters`
-entry in their YAML header. It is recommended to set the
-`citeproc: false` in the YAML header, as this minimizes
-interference with Quarto's default citation handling.
+entry in their YAML header. This filter should run *after*
+Quarto's default filters.
+
+It is recommended to set `citeproc: false` in the YAML header, as
+this minimizes interference with Quarto's default citation
+handling.
 
 ``` yaml
 ---
 filters:
+  # Run Quarto's default filters first
+  - quarto
   - section-bibliographies
 bibliography: my-bibliography.bib
 reference-section-title: References
